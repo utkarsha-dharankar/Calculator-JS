@@ -2,6 +2,36 @@
 <html>
   <head>
     <title>Calculator</title>
+    <script>
+        function pressButton(buttonvalue) {
+            console.log(buttonvalue)
+            let calText = document.querySelector(".input-screen").value + buttonvalue + "";
+            document.querySelector(".input-screen").value = calText;
+        }
+        function calculate() {
+            let calText = document.querySelector(".input-screen").value;
+            document.querySelector(".input-screen").value = eval(calText);
+        }
+        function clearscreen() {
+            document.querySelector(".input-screen").value = "";
+        }
+        function del() {
+           let calText = document.querySelector(".input-screen").value ;
+           document.querySelector(".input-screen").value = calText.substring(0,calText.length-1);
+        }
+    
+        function on(){
+            document.querySelector(".input-screen").style.background="bisque";
+        }
+        function off(btn){
+            document.querySelector(".input-screen").style.background="#636361";
+            document.querySelector(".input-screen").style.border="1px solid #636361";
+            document.querySelector(".input-screen").value = "";
+            document.getElementsByClassName(btn).disabled = true;
+            
+        }   
+    </script>
+
     <style>
       @font-face {
         font-family: 'Digital';
@@ -27,7 +57,7 @@
       .btn{
         height: 60px;
         width: 80px;
-        font-size: 40px;
+        font-size: 30px;
         font-weight: bold;
         background-color: white;
         border-radius: 10px;
@@ -48,6 +78,13 @@
 
       .yellow{
         background-color: #ff9900;
+        color: white;
+        border: 2px solid white;
+
+      }
+
+      .blue{
+        background-color: #3333ff;
         color: white;
         border: 2px solid white;
 
@@ -76,6 +113,12 @@
       <div class="row">
         <input type="text" id="input" class="input-screen" />
       </div>
+      <div class="row ">
+        <button id="bt" class="btn blue" onclick="clearscreen()">AC</button>
+        <button id="bt" class="btn blue" onclick="off()">Off</button>
+        <button id="bt" class="btn blue" onclick="on()">ON</button>
+        <button id="bt" class="btn blue" onclick="del()">DEL</button>
+    </div>
       <div class="row">
         <button class="btn">7</button>
         <button class="btn">8</button>
